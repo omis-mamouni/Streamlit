@@ -6,7 +6,12 @@ data = []
 
 # Titre et logo
 st.title("Application de Gestion des Notes")
-st.image("Logo.jpeg", width=100)  # Remplacez par le chemin de votre logo
+
+# Remplacez "Logo.jpeg" par le chemin complet de votre image, ou déplacez-la dans le même répertoire que votre app.py
+try:
+    st.image("Logo.jpeg", width=100)
+except Exception as e:
+    st.error(f"Erreur lors de l'affichage du logo : {e}")
 
 # Formulaire pour saisir les informations
 with st.form("formulaire_note"):
@@ -31,4 +36,3 @@ if len(data) > 0:
     st.dataframe(df)
 else:
     st.write("Aucune entrée n'a encore été enregistrée.")
-
