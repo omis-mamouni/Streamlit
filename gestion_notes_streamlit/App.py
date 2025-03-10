@@ -9,7 +9,7 @@ if "data" not in st.session_state:
 st.title("Application de Gestion des Notes")
 
 try:
-    st.image("Logo.webp", width=100)
+    st.image("Logo.webp")
 except Exception as e:
     st.error(f"Erreur lors de l'affichage du logo : {e}")
 
