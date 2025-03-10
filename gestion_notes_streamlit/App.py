@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-# Affichage du logo avec un petit coup de propre
+# Centrage du logo
 st.markdown(
     """
     <div style="text-align: center;">
@@ -11,36 +11,33 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Un bon titre pour mettre les choses en place
+# Titre et message d'accueil
 st.title("📚 Application de Gestion des Notes")
+st.write("Veuillez remplir le formulaire ci-dessous pour enregistrer une note.")
 
-# Vérification de l'existence de `st.session_state.data`, sinon on l'initialise
+# Initialisation de la session si nécessaire
 if "data" not in st.session_state:
     st.session_state.data = []
 
-# Un petit message pour guider l'utilisateur
-st.write("Veuillez remplir le formulaire ci-dessous pour enregistrer une note.")
-
-# Formulaire d'ajout d'une note
+# Formulaire pour l'ajout de notes
 with st.form("formulaire_note"):
     nom_prenom = st.text_input("✍️ Nom & Prénom", placeholder="Entrez votre nom complet")
     module = st.text_input("📖 Module", placeholder="Ex : Mathématiques, Informatique...")
-    note = st.number_input("🎯 Note finale", min_value=0, max_value=20, step=0.5)
+    note = st.number_input("🎯 Note finale", min_value=0.0, max_value=20.0, step=0.5)  # Correction ici !
 
-    # Bouton d'enregistrement
+    # 🔴 Ajout du bouton de soumission manquant
     submitted = st.form_submit_button("💾 Enregistrer")
 
     if submitted:
-        if nom_prenom and module:  # Vérification que tout est bien rempli
+        if nom_prenom and module:
             st.session_state.data.append([nom_prenom, module, note])
             st.success("✅ Note enregistrée avec succès !")
         else:
             st.warning("⚠️ Merci de remplir tous les champs avant d'enregistrer.")
 
-# Convertir les données en DataFrame pour affichage
+# Convertir en DataFrame et afficher les notes
 df = pd.DataFrame(st.session_state.data, columns=["Nom & Prénom", "Module", "Note finale"])
 
-# Affichage des notes enregistrées
 if not df.empty:
     st.write("📌 Voici toutes les entrées enregistrées :")
     st.dataframe(df)
