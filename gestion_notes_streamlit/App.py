@@ -1,5 +1,9 @@
 import streamlit as st
 import pandas as pd
+try:
+    st.image("gestion_notes_streamlit/Logo.webp", width=100)
+except Exception as e:
+    st.error(f"Erreur d'affichage du logo : {e}")
 
 # Centrage du logo
 st.markdown(
