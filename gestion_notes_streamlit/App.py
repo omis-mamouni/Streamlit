@@ -8,7 +8,7 @@ st.image(image_path, width=100)
 st.title("📚 Application de Gestion des Notes")
 st.write("Veuillez remplir le formulaire ci-dessous pour enregistrer une note.")
 
-# Initialisation de la session si nécessaire
+# Initialisation de la session
 if "data" not in st.session_state:
     st.session_state.data = []
 
@@ -16,9 +16,9 @@ if "data" not in st.session_state:
 with st.form("formulaire_note"):
     nom_prenom = st.text_input("✍️ Nom & Prénom", placeholder="Entrez votre nom complet")
     module = st.text_input("📖 Module", placeholder="Ex : Mathématiques, Informatique...")
-    note = st.number_input("🎯 Note finale", min_value=0.0, max_value=20.0, step=0.5)  # Correction ici !
+    note = st.number_input("🎯 Note finale", min_value=0.0, max_value=20.0, step=0.5)  
 
-    # 🔴 Ajout du bouton de soumission manquant
+    # bouton de soumission
     submitted = st.form_submit_button("💾 Enregistrer")
 
     if submitted:
