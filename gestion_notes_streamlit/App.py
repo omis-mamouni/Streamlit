@@ -7,7 +7,7 @@ import os
 st.write("Fichiers dans le dossier :", os.listdir())
 
 # Vérifier si le fichier existe
-logo_path = "Logo.webp"
+logo_path = "gestion_notes_streamlit/Logo.webp"
 
 if os.path.exists(logo_path):
     st.success(f"Le fichier {logo_path} existe.")
