@@ -1,53 +1,9 @@
 import streamlit as st
 import pandas as pd
-import streamlit as st
-import os
-import streamlit as st
 import os
 
-# Vérification et affichage des fichiers disponibles
-st.write("📂 Fichiers disponibles :", os.listdir())
-
-# Vérifier le bon emplacement de l'image
 image_path = "gestion_notes_streamlit/Logo.webp"
-
-if os.path.exists(image_path):
-    st.image(image_path, width=100)
-else:
-    st.error(f"⚠️ L'image {image_path} est introuvable. Vérifiez son emplacement et son format.")
-
-# Centrage du logo avec le bon chemin
-st.markdown(
-    """
-    <div style="text-align: center;">
-        <img src="{image_path}" width="100">
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-
-# Titre de l'application
-st.title("📚 Application de Gestion des Notes")
-st.write("Veuillez remplir le formulaire ci-dessous pour enregistrer une note.")
-
-# Vérifier si l'image existe
-image_path = "gestion_notes_streamlit/Logo.webp"
-
-if os.path.exists(image_path):
-    st.image(image_path, width=100)
-else:
-    st.error(f"L'image {image_path} est introuvable. Vérifiez le chemin et l'emplacement du fichier.")
-
-
-# Centrage du logo
-st.markdown(
-    """
-    <div style="text-align: center;">
-        <img src="Logo.webp" width="100">
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+st.image(image_path, width=100)
 
 # Titre et message d'accueil
 st.title("📚 Application de Gestion des Notes")
