@@ -1,9 +1,16 @@
 import streamlit as st
 import pandas as pd
-try:
-    st.image("gestion_notes_streamlit/Logo.webp", width=100)
-except Exception as e:
-    st.error(f"Erreur d'affichage du logo : {e}")
+import streamlit as st
+import os
+
+# Vérifier si l'image existe
+image_path = "gestion_notes_streamlit/Logo.webp"
+
+if os.path.exists(image_path):
+    st.image(image_path, width=100)
+else:
+    st.error(f"L'image {image_path} est introuvable. Vérifiez le chemin et l'emplacement du fichier.")
+
 
 # Centrage du logo
 st.markdown(
