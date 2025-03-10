@@ -1,13 +1,13 @@
 import streamlit as st
 import pandas as pd
 
-# Liste pour stocker les données
-data = []
+# Initialiser la session pour stocker les données de manière temporaire
+if "data" not in st.session_state:
+    st.session_state.data = []
 
 # Titre et logo
 st.title("Application de Gestion des Notes")
 
-# Remplacez "Logo.jpeg" par le chemin complet de votre image, ou déplacez-la dans le même répertoire que votre app.py
 try:
     st.image("Logo.jpeg", width=100)
 except Exception as e:
@@ -19,19 +19,20 @@ with st.form("formulaire_note"):
     module = st.text_input("Module")
     note = st.number_input("Note finale", min_value=0, max_value=20)
     
-    # Bouton pour enregistrer
     submitted = st.form_submit_button("Enregistrer")
-    
+
     if submitted:
-        # Enregistrer les données dans la liste
-        data.append([nom_prenom, module, note])
-        st.success("Les informations ont été enregistrées!")
+        if nom_prenom and module:  # Vérification que les champs ne sont pas vides
+            st.session_state.data.append([nom_prenom, module, note])
+            st.success("Les informations ont été enregistrées!")
+        else:
+            st.warning("Veuillez remplir tous les champs.")
 
-# Convertir la liste en DataFrame pour l'afficher dans un tableau
-df = pd.DataFrame(data, columns=["Nom & Prénom", "Module", "Note finale"])
+# Convertir en DataFrame
+df = pd.DataFrame(st.session_state.data, columns=["Nom & Prénom", "Module", "Note finale"])
 
-# Afficher le tableau dynamique
-if len(data) > 0:
+# Afficher les notes enregistrées
+if not df.empty:
     st.write("Voici toutes les entrées enregistrées :")
     st.dataframe(df)
 else:
