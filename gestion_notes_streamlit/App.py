@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import os
 
 image_path = "gestion_notes_streamlit/Logo.webp"
 st.image(image_path, width=100)
