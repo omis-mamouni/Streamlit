@@ -5,7 +5,7 @@ import pandas as pd
 st.title("Application de Gestion des Notes")
 
 try:
-    st.image("gestion_notes_streamlit/Logo.webp")
+    st.image("gestion_notes_streamlit/Logo.webp", width=100)
 except Exception as e:
     st.error(f"Erreur lors de l'affichage du logo : {e}")
 
