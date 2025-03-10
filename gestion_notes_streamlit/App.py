@@ -2,12 +2,13 @@ import streamlit as st
 import pandas as pd
 
 # Titre et logo
-st.title("Application de Gestion des Notes")
 
 try:
     st.image("gestion_notes_streamlit/Logo.webp", width=100)
 except Exception as e:
     st.error(f"Erreur lors de l'affichage du logo : {e}")
+
+st.title("Application de Gestion des Notes")
 
 # Formulaire pour saisir les informations
 with st.form("formulaire_note"):
