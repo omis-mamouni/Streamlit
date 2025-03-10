@@ -1,6 +1,20 @@
 import streamlit as st
 import pandas as pd
 
+import os
+
+# Afficher les fichiers disponibles dans le répertoire courant
+st.write("Fichiers dans le dossier :", os.listdir())
+
+# Vérifier si le fichier existe
+logo_path = "Logo.webp"
+
+if os.path.exists(logo_path):
+    st.success(f"Le fichier {logo_path} existe.")
+    st.image(logo_path, width=100)
+else:
+    st.error(f"⚠ Le fichier {logo_path} est introuvable dans le dossier actuel.")
+
 # Initialiser la session pour stocker les données de manière temporaire
 if "data" not in st.session_state:
     st.session_state.data = []
